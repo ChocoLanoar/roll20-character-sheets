@@ -1,0 +1,167 @@
+<!-- This sheet is based on a fork of The Black Hack sheet -->
+
+<div class="sheet-container">
+
+    <div class='sheet-row' style="margin-bottom: 10px;">
+        <div class="sheet-col sheet-oneThird">
+			<img width="100%" src="https://chocolanoar.github.io/logo-fleaux.jpg">
+        </div>
+        <div class="sheet-col sheet-twoThirds sheet-bio" style="text-align: center;">
+            <input class="sheet-characterName" style="margin-right: 15px;" type="text" name="attr_character_name" placeholder="Nom"/>
+            <div class="sheet-attributeTitle" style="margin-right: 10px;">Niveau <input type="number" style="font-size: 1.2em;" name="attr_niveau" value="1" /></div>
+			<div style="display: inline-block;">XP <input type="number" style="width: 60px;" name="attr_xp" title="Points d’XP"/></div>
+        </div>
+    </div>
+
+	<div class="sheet-row sheet-attributes sheet-bio">
+		Peuple <input class="sheet-mediumField" type="text" name="attr_peuple" placeholder="Peuple"/>
+		Éducation <input class="sheet-wideTextField" type="text" name="attr_education" placeholder="Éducation"/>
+	</div>
+
+	<div class="sheet-row sheet-attributes sheet-bio" style="margin-bottom: 10px;">
+		Profession <input class="sheet-wideTextField" type="text" name="attr_class" placeholder="Profession"/>
+		Crime <input class="sheet-wideTextField" type="text" name="attr_crime" placeholder="Crime"/>
+	</div>
+
+    <div class="sheet-attributes">
+        <div class="sheet-row">
+            <div class="sheet-attribute">
+                <div class="sheet-attributeTitle">Force</div> <input type="number" name="attr_For" value="attr_For"/>
+                <button type="roll" value="&{template:attributeTest} {{rollname=Jet de Force}} {{attribute=[[@{For}]]}} {{rollResult=[[?{Difficulté|Normale,1d20|Avantage,2d20kl1|Désavantage,2d20kh1}cs<1cf>20+?{Modificateur|0}]]}}">
+                </button>
+            </div>
+
+            <div class="sheet-attribute">
+                <div class="sheet-attributeTitle">Dextérité</div> <input type="number" name="attr_Dex" value="attr_Dex"/>
+                <button type="roll" value="&{template:attributeTest} {{rollname=Jet de Dextérité}} {{attribute=[[@{Dex}]]}} {{rollResult=[[?{Difficulté|Normale,1d20|Avantage,2d20kl1|Désavantage,2d20kh1}cs<1cf>20+?{Modificateur|0}]]}}">
+                </button>
+            </div>
+            
+            <div class="sheet-attribute">
+                <div class="sheet-attributeTitle">Érudition</div> <input type="number" name="attr_Eru" value="attr_Eru"/>
+                <button type="roll" value="&{template:attributeTest} {{rollname=Jet d’Érudition}} {{attribute=[[@{Eru}]]}} {{rollResult=[[?{Difficulté|Normale,1d20|Avantage,2d20kl1|Désavantage,2d20kh1}cs<1cf>20+?{Modificateur|0}]]}}">
+                </button>
+            </div>
+
+            <div class="sheet-attribute">
+                <div class="sheet-attributeTitle">Charisme</div> <input type="number" name="attr_Cha" value="attr_Cha"/>
+                <button type="roll" value="&{template:attributeTest} {{rollname=Jet de Charisme}} {{attribute=[[@{Cha}]]}} {{rollResult=[[?{Difficulté|Normale,1d20|Avantage,2d20kl1|Désavantage,2d20kh1}cs<1cf>20+?{Modificateur|0}]]}}">
+                </button>
+            </div>
+        </div>
+
+        <div class="sheet-row">        
+            <div class="sheet-attribute">
+                <div class="sheet-attributeTitle">Sang-froid</div> <input type="number" name="attr_SF" value="attr_SF"/>            
+                <button type="roll" value="&{template:attributeTest} {{rollname=Jet de Sang-froid}} {{attribute=[[@{SF}]]}} {{rollResult=[[?{Difficulté|Normale,1d20|Avantage,2d20kl1|Désavantage,2d20kh1}cs<1cf>20+?{Modificateur|0}]]}}">
+                </button>
+            </div>
+    
+            <div class="sheet-attribute">
+                <div class="sheet-attributeTitle">Mêlée</div> <input type="number" name="attr_Mel" value="attr_Mel"/>
+                <button type="roll" value="&{template:attributeTest} {{rollname=Jet de Mêlée}} {{attribute=[[@{Mel}]]}} {{rollResult=[[?{Difficulté|Normale,1d20|Avantage,2d20kl1|Désavantage,2d20kh1}cs<1cf>20+?{Modificateur|0}]]}}">
+                </button>
+            </div>
+    
+            <div class="sheet-attribute">
+                <div class="sheet-attributeTitle">Tir</div> <input type="number" name="attr_Tir" value="attr_Tir"/>
+                <button type="roll" value="&{template:attributeTest} {{rollname=Jet de Tir}} {{attribute=[[@{Tir}]]}} {{rollResult=[[?{Difficulté|Normale,1d20|Avantage,2d20kl1|Désavantage,2d20kh1}cs<1cf>20+?{Modificateur|0}]]}}">
+                </button>
+            </div>
+        </div>        
+
+    </div>
+    
+	<div class="sheet-health sheet-row">
+		Dé de Volonté <select name="attr_deVol" style="width: 60px" placeholder="Volonté">
+				<option value="0">Panique</option>
+				<option value="d4">d4</option>
+				<option value="d6" selected="selected">d6</option>
+				<option value="d8">d8</option>
+			</select>
+		<button type="roll" value="**Jet de Volonté : [[@{deVol}cf<2cs0]]**" name="roll_deVol"></button>
+		PV <input type="number" class="sheet-narrowTextField" name="attr_hp" title="Points de vie" /> / <input type="number" class="sheet-narrowTextField" name="attr_hpMax" title="Points de vie max" />
+	</div>
+    
+    <div class="sheet-inventory">
+        <span style="font-size: 160%; font-weight: bold; font-family: 'MedievalSharp', cursive;">Inventaire et dés d’usage</span>
+		<div class="sheet-row">
+			Bouclier <input type="checkbox" name="attr_bouclier"/>
+			Protection <input type="text" class="sheet-mediumField" name="attr_armorPoints" title="Protection" />			
+			Dés de dégâts armé <input type="text" class="sheet-narrowTextField" name="attr_weaponDamage" placeholder="Armé" title="Dégâts armé" value="1d6" /> 
+			<button type="roll" value="**Inflige [[@{weaponDamage}]] // [[@{weaponDamage}]] dégâts**" name="roll_weaponDamage" title="Jet de dégât armé"></button>
+			/ 
+			Désarmé <input type="text" class="sheet-narrowTextField" name="attr_improvisedDamage" placeholder="Désarmé" title="Dégâts à mains nues et armes improvisées" value="1d4" />
+			<button type="roll" value="**Inflige [[@{improvisedDamage}]] dégâts**" name="roll_improvisedDamage" title="Jet de dégât désarmé"></button>
+		</div>
+        <fieldset class="repeating_inventory">
+            <input type="text" name="attr_inventoryItemName" class="sheet-oneThird" placeholder="Nom de l’objet" />
+            <input type="text" name="attr_inventoryItemNotes" class="sheet-half" placeholder="Notes" />
+
+            <select name="attr_usageDieType" placeholder="usage">
+                <option value=""></option>
+                <option value="d4">d4</option>
+                <option value="d6">d6</option>
+                <option value="d8">d8</option>
+                <option value="d10">d10</option>
+                <option value="d12">d12</option>
+                <option value="d20">d20</option>
+            </select>
+            <button type='roll' title="Lancer le dé d’usage" value='**Dé d’usage donne [[@{usageDieType}cf<2cs0]] pour @{inventoryItemName}**' name='roll_usageDie'></button>            
+        </fieldset>
+    </div>
+    
+    <div class="sheet-spells">
+        <span style="font-size: 160%;	font-weight: bold; font-family: 'MedievalSharp', cursive;">Talents et Sorcellerie</span>
+        <fieldset class="repeating_spells">
+            <input type="text" name="attr_spellName" class="sheet-oneThird" placeholder="Nom" />
+            <input type="text" name="attr_spellNotes" class="sheet-half" placeholder="Notes" />
+            <input type="text" class="sheet-narrowTextField" name="attr_spellMacro" placeholder="macro" title="eg: 1d20>10" />
+            <button type="roll" title ="roll spell macro" value="**@{spellName} : [[@{spellMacro}]]**" name="roll_spallMacro"></button>
+        </fieldset>        
+    </div>
+	
+	<div class="sheet-notes">
+		<span style="font-size: 160%; font-weight: bold; font-family: 'MedievalSharp', cursive;">Notes</span>
+		<fieldset class="repeating_notes">
+			<textarea name="attr_note"></textarea>
+		</fieldset>
+	
+	</div>
+	
+
+</div>
+
+<!-- Roll Templates -->
+
+<rolltemplate class="sheet-rolltemplate-attributeTest">
+	<div class="attrRollContainer">
+		<div class="attrRollText"><b>{{rollname}}</b></div>
+		<div class="attrRollText">Attribut : {{attribute}}</div>
+		<div class="attrRollText">Jet de dé : {{rollResult}}</div>
+		<div class="attrRollText"><b>Résultat :
+			{{#rollGreater() attribute rollResult}}
+				<span style="color:green">Réussite !</span>
+			{{/rollGreater() attribute rollResult}}
+
+			{{#rollGreater() rollResult attribute}}
+				<span style="color:red">Échec !</span>
+			{{/rollGreater() rollResult attribute}}
+			
+			{{#rollTotal() attribute rollResult}}
+				<span style="color:red">Échec !</span>
+			{{/rollTotal() attribute rollResult}}
+			
+			{{#rollLess() rollResult 2}}
+				<span style="color:green"><i>Critique !</i></span>
+			{{/rollLess() rollResult 2}}
+
+			{{#rollGreater() rollResult 19}}
+				<span style="color:red"><i>Critique !</i></span>
+			{{/rollGreater() rollResult 19}}
+			
+					
+		</b></div>	
+	</div>	
+
+</rolltemplate>
